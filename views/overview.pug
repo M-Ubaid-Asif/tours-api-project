@@ -1,0 +1,25 @@
+extends home
+
+block content
+    .container.card-container
+    .row
+    if tours
+        each tour of tours
+            .col
+                .card(style="width:18rem")
+                    .card-header
+                        .card-picture
+                            .card-picture-overlay &nbsp;
+                                img.card-img-top(src=`img/toursImages/${tour.coverImage}` alt="...")
+                        h3.heading-tertirary
+                            span the Sea explorer
+                    .card-body
+                        p #{tour.price}
+                        h5.card-title #{tour.toTour.toUpperCase()}
+                        p.card-text Some quick example text to build on the card title and make up the bulk of the card's content.
+                        if user 
+                            button.btn.btn-primary#abc(data-tour-id=`${tour.id}`) Cancel
+                        else
+                            a.btn.btn-primary(href='#') login
+    else
+        h1 overview    

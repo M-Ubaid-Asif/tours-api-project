@@ -1,0 +1,41 @@
+//- extends home
+
+
+block content
+    .container
+        include _error
+        form.row.g-3(action="/user/signup", method="post", enctype="multipart/form-data")
+            div.col-auto
+                label(for="name") Name
+                
+                -let nameval='';
+                if name
+                    nameval = name
+                
+                input.form-control(id="name" type='text' name="name" value=nameval)
+                label(for="staticEmail") Email
+                
+                -let emailval='';
+                if email
+                    emailval = email
+                
+                input.form-control(id="staticEmail" type='email' name="email" value=emailval)
+                label(for="password") Password
+                
+                -let passwordval='';
+                if password
+                    passwordval = password
+                
+                input.form-control(id="password" name="password" type='password' value=passwordval)
+                label(for="password2") Confirm Password
+                
+                -let cpasswordval='';
+                if password
+                    cpasswordval = cpassword
+                
+                input.form-control(id="password2" name="confirmPassword" type='password' value=cpasswordval)
+
+                .mb-3
+                    label.form-label(for="File") Profile Photo
+                    input.form-control(type="file", name='photo', accept="image/*", id="File")
+                button.btn.btn-primary(type='submit') submit
